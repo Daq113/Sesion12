@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Editar Publicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Formulario Reactivo -->
+  <form [formGroup]="editForm" (ngSubmit)="updatePost(editForm.value)">
+    <!-- Campo de Título -->
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input
+        type="text"
+        required
+        formControlName="title"
+        [ngClass]="{'invalid': !editForm.controls['title']?.valid && editForm.controls['title']?.touched}">
+      </ion-input>
+    </ion-item>
+
+    <!-- Campo de Detalles -->
+    <ion-item>
+      <ion-label position="floating">Detalles</ion-label>
+      <ion-textarea
+        required
+        formControlName="details"
+        [ngClass]="{'invalid': !editForm.controls['details']?.valid && editForm.controls['details']?.touched}">
+      </ion-textarea>
+    </ion-item>
+
+    <!-- Botón de Actualización -->
+    <ion-button
+      type="submit"
+      color="primary"
+      expand="full"
+      [disabled]="!editForm.valid">
+      Actualizar
+    </ion-button>
+  </form>
+</ion-content>
